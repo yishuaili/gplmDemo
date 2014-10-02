@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Maps from picklists defined by object and field to LOV name.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>External_Key__c</fullName>
+        <description>Used for updates by Data Loader only.</description>
+        <displayFormat>PM-{000000}</displayFormat>
+        <externalId>true</externalId>
+        <inlineHelpText>Used for updates by Data Loader only.</inlineHelpText>
+        <label>External Key</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Field_Name__c</fullName>
+        <description>The API name of a field mentioned by an object named in Object Name in SFDC.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The API name of a field mentioned by an object named in Object Name in SFDC.</inlineHelpText>
+        <label>Field Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Integration_Only__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Should be checked if this LOV is used in EP only and does not relate to a picklist in SFDC.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Should be checked if this LOV is used in EP only and does not relate to a picklist in SFDC.</inlineHelpText>
+        <label>Integration Only</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Object_Name__c</fullName>
+        <description>The API name of an object in SFDC.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The API name of an object in SFDC.</inlineHelpText>
+        <label>Object Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Picklist Mapping</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>LOV Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Picklist Mappings</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Integration_Only_Validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR( Integration_Only__c = TRUE &amp;&amp; OR(NOT(ISBLANK( Object_Name__c )), NOT( ISBLANK( Field_Name__c ))) , Integration_Only__c = FALSE &amp;&amp; OR(ISBLANK( Object_Name__c ),ISBLANK( Field_Name__c )))</errorConditionFormula>
+        <errorMessage>If Integration Only is not set, you have to define an Object Name and a Field Name otherwise you must not set Object Name and Field Name.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>LOV_Name_Syntax</fullName>
+        <active>true</active>
+        <description>Checks the LOV syntax.</description>
+        <errorConditionFormula>NOT(REGEX( Name , &quot;[A-Z]{1}[A-Z0-9_]*&quot;))</errorConditionFormula>
+        <errorMessage>The LOV name may consist of latin upper cases, arabic numbers and underlines only.</errorMessage>
+    </validationRules>
+</CustomObject>
