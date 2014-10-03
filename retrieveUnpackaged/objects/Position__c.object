@@ -126,7 +126,7 @@ about the open job positions at our company</description>
         <label>Functional Area</label>
         <picklist>
             <picklistValues>
-                <fullName>Finance</fullName>
+                <fullName>Finance1</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
